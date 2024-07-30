@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --bg: white;
   --textColor: black;
@@ -21,14 +25,13 @@ a {
   text-decoration: none;
 }
 
-.container {
+/* .container {
   min-height: 100vh;
   background-color: var(--bg);
   color: var(--textColor);
-}
+} */
 
-.wrapper {
-  max-width: 1536px;
+/* .wrapper {
   margin-left: auto;
   margin-right: auto;
   background-color: purple;
@@ -57,4 +60,4 @@ a {
   .wrapper {
     max-width: 475px;
   }
-}
+} */
