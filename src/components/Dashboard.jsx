@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Dashboard = () => {
   return (
-    <div className="bg-blue-100 h-full">
+    <div className="h-full">
       <div className="flex flex-col gap-2 mb-2 items-center">
         <Link href={"/"}>
           <span className="text-sm font-light capitalize">title</span>
