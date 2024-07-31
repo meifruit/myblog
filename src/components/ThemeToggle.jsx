@@ -9,7 +9,7 @@ const ThemeToggle = () => {
   console.log(theme);
   return (
     <div
-      className="w-10 h-5 rounded-full cursor-pointer flex items-center justify-center relative"
+      className="w-10 h-5 rounded-full cursor-pointer  items-center justify-center relative hidden sm:flex"
       onClick={toggle}
       style={
         theme === "dark"
