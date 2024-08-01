@@ -7,6 +7,12 @@ const config = {
   ],
   theme: {
     extend: {
+      colors: {
+        bg: "var(--bg)",
+        textColor: "var(--textColor)",
+        softBg: "var(--softBg)",
+        softTextColor: "var(--softTextColor)",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

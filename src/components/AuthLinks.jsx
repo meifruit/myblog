@@ -23,34 +23,54 @@ const AuthLinks = () => {
         className="w-5 h-4 flex flex-col justify-between cursor-pointer sm:hidden"
         onClick={() => setOpen(!open)}
       >
-        <div className="w-full h-0.5 bg-black"></div>
-        <div className="w-full h-0.5 bg-black"></div>
-        <div className="w-full h-0.5 bg-black"></div>
+        <div
+          className="w-full h-0.5 bg-black"
+          style={{ backgroundColor: "var(--bg)" }}
+        ></div>
+        <div
+          className="w-full h-0.5 bg-black"
+          style={{ backgroundColor: "var(--bg)" }}
+        ></div>
+        <div
+          className="w-full h-0.5 bg-black"
+          style={{ backgroundColor: "var(--bg)" }}
+        ></div>
       </div>
       {open && (
         <div
-          className="absolute left-0 w-full flex flex-col items-center justify-center gap-12"
+          className="waffle-menu absolute left-0 w-full flex flex-col items-center justify-center gap-12"
           style={{
             height: "calc(100vh - 60px)",
             top: "60px",
-            backgroundColor: "var(--Bg)",
+            backgroundColor: "var(--bg)",
+            textColor: "var(--textColor)",
           }}
         >
-          <Link href="/">Home</Link>
-          <Link href="/">Blog</Link>
-          <Link href="/">Video</Link>
-          <Link href="/">Coding</Link>
-          <Link href="/">Contacts</Link>
+          <Link href="/" className="menu-link">
+            Home
+          </Link>
+          <Link href="/" className="menu-link">
+            Blog
+          </Link>
+          <Link href="/" className="menu-link">
+            Video
+          </Link>
+          <Link href="/" className="menu-link">
+            Coding
+          </Link>
+          <Link href="/" className="menu-link">
+            Contacts
+          </Link>
           {status === "notauthenticated" ? (
-            <Link href="/login" className="">
+            <Link href="/login" className="menu-link">
               Login
             </Link>
           ) : (
             <>
-              <Link href="/write" className="">
+              <Link href="/write" className="menu-link">
                 Write
               </Link>
-              <span className="">Logout</span>
+              <span className="menu-link">Logout</span>
             </>
           )}
         </div>

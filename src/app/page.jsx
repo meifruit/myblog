@@ -1,7 +1,6 @@
 import CardList from "../components/CardList";
-import CategoryList from "../components/CategoryList";
+import CategoryList from "../components/category/CategoryList";
 import Dashboard from "../components/Dashboard";
-import Featured from "../components/Featured";
 
 export default function Home() {
   return (
@@ -10,7 +9,6 @@ export default function Home() {
         <Dashboard />
       </div>
       <div className="w-full lg:w-[70%]">
-        <Featured />
         <CategoryList />
         <CardList />
       </div>
