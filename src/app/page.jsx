@@ -1,4 +1,4 @@
-import CardList from "../components/CardList";
+import CardList from "../components/cardList/CardList";
 import CategoryList from "../components/category/CategoryList";
 import Dashboard from "../components/Dashboard";
 

@@ -1,0 +1,44 @@
+.container {
+  margin-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 300px;
+  border-radius: 15px;
+  background-color: rgb(246, 225, 228);
+}
+.imageContainer {
+  height: 300px;
+  width: 300px;
+  position: relative;
+  overflow: hidden; /* Ensures the image fits within the border radius */
+  border-radius: 10px 10px 0 0;
+}
+.image {
+  object-fit: cover;
+}
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+  padding: 15px;
+}
+.date {
+  color: gray;
+}
+.category {
+  color: crimson;
+  font-weight: 500;
+}
+.desc {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--softTextColor);
+}
+.link {
+  border-bottom: 1px solid crimson;
+  width: max-content;
+  padding: 2px;
+}
