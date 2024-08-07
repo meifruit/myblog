@@ -1,5 +1,6 @@
 import Image from "next/image";
 import style from "./singlepage.module.css";
+import Comments from "../../components/comments/Comments";
 const SinglePage = () => {
   return (
     <div className={style.container}>
@@ -43,6 +44,9 @@ const SinglePage = () => {
               aliquid? Laudantium, sint. Ipsum libero eius consequatur quod,
               magnam consectetur ipsam quisquam dignissimos!
             </p>
+          </div>
+          <div className={style.comment}>
+            <Comments />
           </div>
         </div>
       </div>
