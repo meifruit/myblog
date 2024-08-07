@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import { ThemeContextProvider } from "../context/ThemeContext";
 import Navbar from "../components/Navbar";
 import ThemeProvider from "./providers/ThemeProvider";
+import Dashboard from "../components/Dashboard";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,12 @@ export default function RootLayout({ children }) {
             <div className="w-full  px-4 2xl:px-32 ">
               <Navbar />
             </div>
-            <div className=" 2xl:px-32">{children}</div>
+            <div className="lg:w-full flex gap-6">
+              <div className="min-h-screen hidden xl:block w-[20%]">
+                <Dashboard />
+              </div>
+              <div className="w-full lg:w-[70%]">{children}</div>
+            </div>
             {/* <Footer /> */}
           </ThemeProvider>
         </ThemeContextProvider>
