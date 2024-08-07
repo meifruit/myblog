@@ -7,7 +7,7 @@
   flex: 1;
 }
 .title {
-  font-size: 38px;
+  font-size: 42px;
   margin-bottom: 40px;
 }
 .user {
@@ -49,7 +49,6 @@
 }
 
 .post {
-  flex: 5;
   margin-top: 60px;
 }
 
@@ -57,4 +56,30 @@
   font-size: 20px;
   font-weight: 300;
   margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1536px) {
+  .title {
+    font-size: 38px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .title {
+    font-size: 32px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .imageContainer {
+    display: none;
+  }
+}
+@media screen and (max-width: 640px) {
+  .title {
+    font-size: 28px;
+  }
+
+  .description p {
+    font-size: 18px;
+  }
 }
