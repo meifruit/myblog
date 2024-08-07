@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+.buttonleft {
+  margin-right: 20px;
+  width: 50px;
+  border: none;
+  padding: 3px;
+  background-color: antiquewhite;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttonright {
+  width: 50px;
+  border: none;
+  padding: 3px;
+  background-color: antiquewhite;
+  cursor: pointer;
+  border-radius: 5px;
+}
