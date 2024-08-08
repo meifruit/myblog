@@ -87,3 +87,18 @@ a {
     max-width: 475px;
   }
 } */
+
+.ql-container {
+  font-size: 28px !important;
+}
+
+.quill > .ql-container > .ql-editor.ql-blank::before {
+  color: #b3b3b1;
+}
+
+/* .ql-bubble .ql-editor {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+} */
