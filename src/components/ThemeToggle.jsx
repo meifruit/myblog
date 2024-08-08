@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 const ThemeToggle = () => {
   const { toggle, theme } = useContext(ThemeContext);
-  console.log(theme);
+
   return (
     <div
       className="w-10 h-5 rounded-full cursor-pointer  items-center justify-center relative hidden sm:flex"
