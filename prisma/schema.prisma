@@ -17,7 +17,7 @@ model User {
   id            String          @id @default(cuid())
   name          String?
   username      String?         @unique
-  email         String?         @unique
+  email         String          @unique
   emailVerified DateTime?
   image         String?
   Session       Session[]
@@ -25,8 +25,10 @@ model User {
   // Optional for WebAuthn support
   Authenticator Authenticator[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Post      Post[]
+  Comment   Comment[]
 }
 
 model Account {
@@ -87,4 +89,37 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([userId, credentialID])
+}
+
+model Category {
+  id    String  @id @default(cuid()) @map("id")
+  slug  String  @unique
+  title String
+  img   String?
+  Posts Post[]
+}
+
+model Post {
+  id        String    @id @default(cuid()) @map("id")
+  createdAt DateTime  @default(now())
+  slug      String    @unique
+  title     String
+  desc      String
+  img       String?
+  views     Int       @default(0)
+  catSlug   String
+  category  Category? @relation(fields: [catSlug], references: [slug])
+  useEmail  String
+  user      User      @relation(fields: [useEmail], references: [email])
+  comments  Comment[]
+}
+
+model Comment {
+  id        String   @id @default(cuid()) @map("id")
+  createdAt DateTime @default(now())
+  desc      String
+  useEmail  String
+  user      User     @relation(fields: [useEmail], references: [email])
+  postSlug  String
+  post      Post     @relation(fields: [postSlug], references: [slug])
 }
