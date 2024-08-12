@@ -1,11 +1,11 @@
 "use client";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
 
 const AuthLinks = () => {
   const [open, setOpen] = useState(false);
-  const status = "notauthenticated";
+  const { status } = useSession();
   return (
     <>
       {status === "unauthenticated" ? (

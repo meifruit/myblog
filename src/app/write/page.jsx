@@ -4,11 +4,24 @@ import style from "./writepage.module.css";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.bubble.css";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const WritePage = () => {
+  const { status } = useSession();
+
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
+
+  const router = useRouter();
+  if (status === "loading") {
+    return <div className={style.loading}>Loading...</div>;
+  }
+  if (status === "authenticated") {
+    router.push("./");
+  }
+
   return (
     <div className={style.container}>
       <input type="text" placeholder="Title" className={style.input} />
