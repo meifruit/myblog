@@ -1,6 +1,6 @@
 import Image from "next/image";
 import style from "./singlepage.module.css";
-import Comments from "../../components/comments/Comments";
+import Comments from "../../../components/comments/Comments";
 const SinglePage = () => {
   return (
     <div className={style.container}>
