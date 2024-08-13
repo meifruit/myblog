@@ -1,9 +1,9 @@
 import Link from "next/link";
 import style from "./card.module.css";
 import Image from "next/image";
-const Card = () => {
+const Card = ({ key, item }) => {
   return (
-    <div className={style.container}>
+    <div className={style.container} key={key}>
       <div className={style.imageContainer}>
         <Image src="/photo.jpeg" alt="" fill className={style.image} />
       </div>
@@ -13,7 +13,7 @@ const Card = () => {
           <span className={style.category}>study</span>
         </div>
         <Link href={"/"}>
-          <h1>Lorem ipsun sit </h1>
+          <h1>{item.title} </h1>
         </Link>
         <p className={style.desc}>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit.

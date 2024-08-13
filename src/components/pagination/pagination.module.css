@@ -20,3 +20,12 @@
   cursor: pointer;
   border-radius: 5px;
 }
+
+.buttonright:disabled {
+  background-color: transparent;
+  cursor: not-allowed;
+}
+.buttonleft:disabled {
+  background-color: transparent;
+  cursor: not-allowed;
+}
