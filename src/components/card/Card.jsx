@@ -9,8 +9,10 @@ const Card = ({ key, item }) => {
       </div>
       <div className={style.textContainer}>
         <div className="detail">
-          <span className={style.date}>11.02.2024</span>
-          <span className={style.category}>study</span>
+          <span className={style.date}>
+            {item.createdAt.substring(0, 10)} -{" "}
+          </span>
+          <span className={style.category}>{item.catSlug}</span>
         </div>
         <Link href={"/"}>
           <h1>{item.title} </h1>
