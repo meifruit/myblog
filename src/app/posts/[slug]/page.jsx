@@ -2,7 +2,7 @@ import Image from "next/image";
 import style from "./singlepage.module.css";
 import Comments from "../../../components/comments/Comments";
 import { format } from "date-fns"; // You can use date-fns or a similar library for date formatting.
-
+import parse from "html-react-parser";
 const getData = async (slug) => {
   const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
     cache: "no-store",
@@ -56,7 +56,8 @@ const SinglePage = async ({ params }) => {
       <div className={style.content}>
         <div className={style.post}>
           <div className={style.description}>
-            <p>{data?.desc}</p>
+            {/* Use html-react-parser to safely render HTML content */}
+            {parse(data?.desc || "")}
           </div>
           <div className={style.comment}>
             <Comments postSlug={slug} />

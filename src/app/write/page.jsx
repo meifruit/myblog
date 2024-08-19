@@ -79,20 +79,34 @@ const WritePage = () => {
       .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
-    const res = await fetch("/api/posts", {
-      method: "POST",
-      body: JSON.stringify({
-        title,
-        desc: value,
-        img: media,
-        slug: slugify(title),
-        catSlug: catSlug || "style", //If not selected, choose the general category
-      }),
-    });
-    console.log(res);
-    if (res.status === 200) {
-      const data = await res.json();
-      router.push(`/posts/${data.slug}`);
+    try {
+      const slug = slugify(title); // Generate slug based on title
+      const res = await fetch("/api/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title,
+          desc: value,
+          img: media,
+          slug, // Include the slug in the request body
+          catSlug: catSlug || "style", // Default to "style" if not selected
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.post && data.post.slug) {
+          router.push(`/posts/${data.post.slug}`);
+        } else {
+          console.error("Unexpected API response structure", data);
+        }
+      } else {
+        console.error("Failed to create post", await res.text());
+      }
+    } catch (error) {
+      console.error("An error occurred while creating the post:", error);
     }
   };
 
@@ -108,10 +122,8 @@ const WritePage = () => {
         className={styles.select}
         onChange={(e) => setCatSlug(e.target.value)}
       >
-        <option value="style">style</option>
         <option value="fashion">fashion</option>
         <option value="food">food</option>
-        <option value="culture">culture</option>
         <option value="travel">travel</option>
         <option value="coding">coding</option>
       </select>

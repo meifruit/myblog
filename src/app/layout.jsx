@@ -22,14 +22,17 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <ThemeContextProvider>
             <ThemeProvider>
-              <div className="w-full  px-4 2xl:px-32 ">
-                <Navbar />
-              </div>
+              <div className="w-full  px-4 2xl:px-32 "></div>
               <div className="lg:w-full flex gap-6">
                 <div className="min-h-screen hidden xl:block w-[20%]">
                   <Dashboard />
                 </div>
-                <div className="w-full lg:w-[70%]">{children}</div>
+                <div className="w-full lg:w-[80%]">
+                  <div className="">
+                    <Navbar />
+                  </div>
+                  <div className="m-6">{children}</div>
+                </div>
               </div>
               {/* <Footer /> */}
             </ThemeProvider>
