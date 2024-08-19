@@ -43,32 +43,49 @@ export const POST = async (req) => {
 
   if (!session) {
     return new NextResponse(
-      JSON.stringify(
-        {
-          message: "Not Authenticated.",
-        },
-        { status: 401 }
-      )
+      JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
     );
   }
 
   try {
     const body = await req.json();
+    const { title, desc, img, slug, catSlug } = body;
+
+    // Validate required fields
+    if (!title || !desc || !slug || !catSlug) {
+      return new NextResponse(
+        JSON.stringify({ message: "Missing required fields." }, { status: 400 })
+      );
+    }
+
+    // Check if category exists
+    const category = await prisma.category.findUnique({
+      where: { slug: catSlug },
+    });
+
+    if (!category) {
+      return new NextResponse(
+        JSON.stringify({ message: "Category not found!" }, { status: 404 })
+      );
+    }
+
+    // Create the post
     const post = await prisma.post.create({
-      data: { ...body, useEmail: session.user.email },
+      data: {
+        title,
+        desc,
+        img,
+        slug,
+        catSlug,
+        useEmail: session.user.email,
+      },
     });
 
     return new NextResponse(JSON.stringify(post), { status: 200 });
   } catch (err) {
-    console.error("Failed to post comment:", err);
+    console.error("Error creating post:", err);
     return new NextResponse(
-      JSON.stringify(
-        {
-          message: "Something went wrong: failed to post comment.",
-          err: err.message,
-        },
-        { status: 500 }
-      )
+      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
     );
   }
 };
