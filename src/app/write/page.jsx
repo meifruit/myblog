@@ -89,7 +89,7 @@ const WritePage = () => {
         catSlug: catSlug || "style", //If not selected, choose the general category
       }),
     });
-
+    console.log(res);
     if (res.status === 200) {
       const data = await res.json();
       router.push(`/posts/${data.slug}`);
@@ -154,4 +154,5 @@ const WritePage = () => {
     </div>
   );
 };
+
 export default WritePage;
