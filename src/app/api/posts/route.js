@@ -6,7 +6,7 @@ export const GET = async (req) => {
   const page = searchParams.get("page");
   const category = searchParams.get("category");
 
-  const POST_PER_PAGE = 2;
+  const POST_PER_PAGE = 3;
 
   const safePage = Math.max(page, 1);
   const query = {
@@ -37,55 +37,50 @@ export const GET = async (req) => {
   }
 };
 
-// create a post
 export const POST = async (req) => {
   const session = await getAuthSession();
+  // utils/slugGenerator.js
+  const generateSlug = (title) => {
+    return title
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/[\s_-]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  };
 
   if (!session) {
-    return new NextResponse(
-      JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
-    );
+    return new NextResponse(JSON.stringify({ message: "Not Authenticated!" }), {
+      status: 401,
+    });
   }
 
   try {
     const body = await req.json();
-    const { title, desc, img, slug, catSlug } = body;
 
-    // Validate required fields
-    if (!title || !desc || !slug || !catSlug) {
+    // Ensure all required fields are present
+    if (!body.title || !body.desc || !body.catSlug) {
       return new NextResponse(
-        JSON.stringify({ message: "Missing required fields." }, { status: 400 })
+        JSON.stringify({ message: "Missing required fields" }),
+        { status: 400 }
       );
     }
 
-    // Check if category exists
-    const category = await prisma.category.findUnique({
-      where: { slug: catSlug },
-    });
-
-    if (!category) {
-      return new NextResponse(
-        JSON.stringify({ message: "Category not found!" }, { status: 404 })
-      );
-    }
-
-    // Create the post
+    const slug = generateSlug(body.title);
     const post = await prisma.post.create({
       data: {
-        title,
-        desc,
-        img,
+        ...body,
         slug,
-        catSlug,
-        useEmail: session.user.email,
+        useEmail: session.user.email, // Ensure this is valid
       },
     });
 
-    return new NextResponse(JSON.stringify(post), { status: 200 });
+    return new NextResponse(JSON.stringify({ post }), { status: 200 });
   } catch (err) {
-    console.error("Error creating post:", err);
+    console.error("Error creating post:", err); // Log the error
     return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+      JSON.stringify({ message: "Something went wrong!", error: err.message }),
+      { status: 500 }
     );
   }
 };

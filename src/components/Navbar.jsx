@@ -6,10 +6,10 @@ import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center p-4">
-      <div className="flex-1 items-center">
+    <div className="flex justify-end items-end p-4">
+      {/* <div className="flex-1 items-center">
         <span>MyBlog</span>
-      </div>
+      </div> */}
       <div className="flex items-center gap-3">
         {/* <Image
           src="/mei.jpg"

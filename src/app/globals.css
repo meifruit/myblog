@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --bg: white;
+  --bg: #d5bdaf;
   --textColor: black;
   --softBg: #f0f0f0;
   --softTextColor: #626252;
@@ -35,12 +35,12 @@ a {
 }
 
 .light {
-  --bg: white;
+  /* --bg: #e3d5ca; */
   --textColor: black;
   --softBg: #f0f0f0;
   --softTextColor: #626262;
-  /* background-color: white;
-  color: #0f0f0f; */
+  background-color: #f7e1d7;
+  color: #0f0f0f;
 }
 
 .menu-link {
@@ -49,6 +49,9 @@ a {
 .waffle-mune {
   background-color: var(--bg);
   color: var(--textColor);
+}
+.dashboard {
+  background-color: var(--bg);
 }
 
 /* .container {
