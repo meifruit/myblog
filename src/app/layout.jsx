@@ -7,6 +7,8 @@ import Navbar from "../components/Navbar";
 import ThemeProvider from "./providers/ThemeProvider";
 import Dashboard from "../components/Dashboard";
 import AuthProvider from "./providers/AuthProvider";
+import Link from "next/link";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,18 +24,30 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <ThemeContextProvider>
             <ThemeProvider>
-              <div className="w-full  px-4 2xl:px-32 "></div>
-              <div className="lg:w-full flex gap-6">
-                <div className="min-h-screen hidden xl:block w-[20%]">
+              <div className="h-screen flex">
+                {/* left */}
+                <div className="dashboard w-[14%] md:w-[8%] lg:w-[16%] xl:w-[14%] p-4">
+                  <Link
+                    href={"/"}
+                    className="flex items-center justify-center lg:justify-start gap-3 pl-8"
+                  >
+                    <Image
+                      src={"/logo.png"}
+                      alt={"logo"}
+                      width={32}
+                      height={32}
+                    />
+                    <span className="hidden lg:block">MBlog</span>
+                  </Link>
                   <Dashboard />
                 </div>
-                <div className="w-full lg:w-[80%]">
-                  <div className="">
-                    <Navbar />
-                  </div>
+                {/* right */}
+                <div className="w-[86%] md:w-[92%] lg:w-[84%] xl:w-[86%] overflow-scroll">
+                  <Navbar />
                   <div className="m-6">{children}</div>
                 </div>
               </div>
+
               {/* <Footer /> */}
             </ThemeProvider>
           </ThemeContextProvider>
