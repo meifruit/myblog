@@ -20,7 +20,7 @@ const CategoryList = async () => {
   const data = await getData();
   return (
     <div className="container">
-      <h1 className="title ml-0 mr-0">Categories</h1>
+      <h1 className="title ml-0 mr-0 uppercase">Categories</h1>
       <div className="categories flex flex-wrap gap-3 justify-between">
         {data?.map((item) => (
           <Link
