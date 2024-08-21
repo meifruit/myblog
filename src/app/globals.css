@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --bg: #d5bdaf;
+  --bg: #1282a2;
   --textColor: black;
   --softBg: #f0f0f0;
   --softTextColor: #626252;
@@ -39,7 +39,7 @@ a {
   --textColor: black;
   --softBg: #f0f0f0;
   --softTextColor: #626262;
-  background-color: #f7e1d7;
+  background-color: #fefcfb;
   color: #0f0f0f;
 }
 

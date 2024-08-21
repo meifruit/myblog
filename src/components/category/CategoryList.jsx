@@ -8,11 +8,14 @@ const getData = async () => {
   });
 
   if (!res.ok) {
-    throw new Error("Failed");
+    throw new Error(
+      `Failed to fetch categories: ${res.status} ${res.statusText}`
+    );
   }
 
   return res.json();
 };
+
 const CategoryList = async () => {
   const data = await getData();
   return (
