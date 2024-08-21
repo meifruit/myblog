@@ -2,14 +2,13 @@
   margin-bottom: 50px;
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  width: 300px;
+  width: 400px;
   border-radius: 15px;
   background-color: rgb(246, 225, 228);
 }
 .imageContainer {
-  height: 300px;
-  width: 300px;
+  height: 250px;
+  width: 400px;
   position: relative;
   overflow: hidden; /* Ensures the image fits within the border radius */
   border-radius: 10px 10px 0 0;
@@ -42,4 +41,22 @@
   border-bottom: 1px solid crimson;
   width: max-content;
   padding: 2px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 290px;
+  }
+  .imageContainer {
+    width: 290px;
+  }
+}
+@media screen and(min-width: 600px) {
+  .container {
+    width: 700px;
+  }
+  .imageContainer {
+    width: 700px;
+    height: 400px;
+  }
 }
